@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.qhit.hl.grl.ltz.tkgl.bean.MachineQuestion" table="t_machineTest" schema="dbo" catalog="db_eacm">
+		<id name="qid" type="java.lang.Integer">
+			<column name="qid" />
+			<generator class="native"></generator>
+		</id>
+		<property name="qtitle" type="java.lang.String">
+			<column name="qTitle" length="100" not-null="true" />
+		</property>	
+		<property name="degree" type="java.lang.String">
+			<column name="degree" length="4" not-null="true" />
+		</property>
+		<property name="qsId" type="java.lang.Integer" insert="false" update="false">
+			<column name="qsId" not-null="true" />
+		</property>
+		<property name="chapter" type="java.lang.String">
+			<column name="chapter" length="2" />
+		</property>
+		<!-- n-1 -->
+		<many-to-one name="course" class="com.qhit.hl.grl.ltz.kmgl.bean.Course" column="qsId"></many-to-one>
+	</class>
+</hibernate-mapping>
